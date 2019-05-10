@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<title th:text="Kanban Spring - ${t.title}"></title>
+</head>
+<body>
+
+	<h1 th:text="t.title"></h1>
+
+	<p>Expected duration : <span th:text="${t.expectedDuration == -1}: 'unknown': ${t.expectedDuration}"></span></p>
+
+	<p>Assigned to <span th:text="${t.assignee.username}"></span>, reported by 
+		<span th:text="${t.reporter.username}"></span></p>
+
+	<p th:text="t.details"></p>
+
+
+</body>
+</html>

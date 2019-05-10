@@ -14,6 +14,7 @@ public class Task implements Serializable {
 	private String title;
 	private String details;
 	private Duration expectedDuration;
+	private TaskStatus status = TaskStatus.OPEN;
 
 	private KUser reporter;
 	private KUser assignee;
@@ -45,6 +46,11 @@ public class Task implements Serializable {
 
 	public Task(String title, String details, KUser reporter, KUser assignee, int hours) {
 		this(title, details, reporter, assignee);
+		setExpectedDuration(hours);
+	}
+
+	public Task(String title, KUser reporter, KUser assignee, int hours) {
+		this(title, title, reporter, assignee);
 		setExpectedDuration(hours);
 	}
 
@@ -86,10 +92,35 @@ public class Task implements Serializable {
 		expectedDuration = Duration.ofHours(hours);
 	}
 
+	public KUser getAssignee() {
+		return assignee;
+	}
+
+	public void setAssignee(KUser u) {
+		assignee = u;
+	}
+
+	public KUser getReporter() {
+		return reporter;
+	}
+
+	public void setReporter(KUser u) {
+		reporter = u;
+	}
+
+	public void setStatus(TaskStatus status) {
+		this.status	= status;
+	}
+
+	public TaskStatus getStatus() {
+		return status;
+	}
+
 	@Override
 	public int hashCode() {
 		return id.hashCode() + title.hashCode() 
 			+ details.hashCode() + reporter.hashCode()
+			+ status.hashCode()
 			+ assignee.hashCode();
 	}
 
@@ -103,9 +134,11 @@ public class Task implements Serializable {
 		return false;
 	}
 
+	@Override
 	public String toString() {
 		return "Task[title: " + title + ", details: " + details 
 			+ ", expectedDuration: " + getExpectedDuration()
+			+ ", status: " + status
 			+ ", reporter: " + reporter
 			+ ", assignee: " + assignee
 			+ ", id: " +id+"]";

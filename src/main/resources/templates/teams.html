@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<title>Kanban Spring - Teams</title>
+</head>
+<body>
+
+	<h3>Teams</h3>
+
+	<h5 th:each="t : ${teams}">
+		<a th:text="${t.name}" th:href="@{{teamName}/project(teamName=${t.name})}"></a>
+	</h5>
+</body>
+</html>

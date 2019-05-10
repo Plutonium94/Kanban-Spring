@@ -12,8 +12,19 @@ public class KUser extends User {
 	@Id
 	private String id;
 
-	public KUser(String username, String password) {
+	private Team team;
+
+	public KUser() {
+		super("empty", "empty", new ArrayList<SimpleGrantedAuthority>(Arrays.asList(new SimpleGrantedAuthority[]{new SimpleGrantedAuthority("ROLE_USER")})));
+	}
+
+	public KUser(String username, String password, Team team) {
 		super(username, password, new ArrayList<SimpleGrantedAuthority>(Arrays.asList(new SimpleGrantedAuthority[]{new SimpleGrantedAuthority("ROLE_USER")})));
+		this.team = team;
+	}
+
+	public KUser(String username, String password) {
+		this(username, password, null);
 	}
 
 	public String getId() {
@@ -24,24 +35,33 @@ public class KUser extends User {
 		this.id = id;
 	}
 
+	public Team getTeam() {
+		return team;
+	}
+
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if(o == null) { return false; }
 		if(o instanceof KUser) {
 			KUser u = (KUser)o;
-			return super.equals(u) && id.equals(u.id);
+			return super.equals(u) && id.equals(u.id) && team.equals(u.team);
 		}
 		return false;
 	}
 
 	@Override
 	public int hashCode() {
-		return super.hashCode() + id.hashCode();
+		return super.hashCode() + id.hashCode() + team.hashCode();
 	}
 
 	@Override
 	public String toString() {
-		return "KUser[id: " + id + ", user: " + super.toString() + "]" ;
+		return "KUser[id: " + id + ", user: " + super.toString()
+			+ ", team : " + team + "]" ;
 	}
 
 

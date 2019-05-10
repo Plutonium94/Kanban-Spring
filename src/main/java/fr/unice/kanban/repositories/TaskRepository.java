@@ -1,4 +1,4 @@
-package fr.unice.kanban;
+package fr.unice.kanban.repositories;
 
 import fr.unice.kanban.entities.Task;
 

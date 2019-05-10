@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<title>Kanban Spring - Tasks</title>
+</head>
+<body>
+
+	<main>
+		
+		<table border="1">
+			<thead>
+				<tr>
+					<td>Id</td>
+					<td>Username</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="u : ${users}">
+					<td th:text="${u.id}"></td>
+					<td th:text="${u.username}"></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</main>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<title>Kanban Spring - Projects</title>
+</head>
+<body>
+
+	<h3>Projects</h3>
+
+	<h5 th:text="${p.name}" th:each="p : ${projects}"></h5>
+</body>
+</html>
