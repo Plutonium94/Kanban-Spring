@@ -12,5 +12,7 @@
 	<h5 th:each="p : ${projects}">
 		<a th:href="@{/projects/{name}(name=${p.name})}" th:text="${p.name}"></a>
 	</h5>
+
+	<p th:text="${projects}"></p>
 </body>
 </html>

@@ -13,8 +13,9 @@ public class Project {
 	@Id
 	private BigInteger id;
 
-	/* Duplicates are accepted */
+	 // Duplicates are accepted 
 	@Indexed(unique = true)
+
 	private String name;
 
 	private Team team;
@@ -76,7 +77,7 @@ public class Project {
 	}
 
 	public String toString() {
-		return "Project[name= " + name + ",team : " + team + ", tasks" + tasks + "]";
+		return "Project[name= " + name + ",team : " + team.getName() + ", tasks" + tasks + "]";
 	}
 
 	public int hashCode() {
