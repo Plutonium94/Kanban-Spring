@@ -59,11 +59,12 @@ public class App implements CommandLineRunner {
             Task t10 = taskRepository.save(new Task("Remove feature 32", u2, u1, 3));
 
             Optional<Task> ot1 = taskRepository.findById(t1.getId());
-            // System.out.println(ot1);
+            System.out.println(ot1);
             Project p1 = projectRepository.save(new Project("Accounts application", tm2, t1,t2, t3));
             Project p2 = projectRepository.save(new Project("Medical Cabinet Software", tm1, t4, t5));
             Project p3 = projectRepository.save(new Project("Hybrid mobile app development", tm1, t6, t7, t8));
             Project p4 = projectRepository.save(new Project("Creation of calculator application", tm3, t9, t10));
+            System.out.println(p1);
         }
 
     }

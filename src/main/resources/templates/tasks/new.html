@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<title th:text="${project.name + ' - New task'}"></title>
+</head>
+<body>
+
+	<h1 th:text="${project.name}"></h1>
+
+	<form action="#" th:action="@{/projects/{name}/tasks/add(name=${project.name})}" th:object="${task}" method="POST">
+
+		<input type="text" th:field="*{title}" placeholder="title" required> <br>
+
+		<textarea th:field="*{details}" placeholder="details"></textarea> <br>
+
+		Expected duration (days) : <input type="number" th:field="*{expectedDuration}"> <br>
+
+		<select th:field="*{assignee}">
+			<option th:each="u : ${users}" th:text="${u.username}" th:value="${u}"></option>
+
+		</select>
+
+		<button type="submit">Add task to project</button>
+
+	</form>
+
+</body>
+</html><!--  -->

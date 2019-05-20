@@ -10,10 +10,11 @@ import java.util.Arrays;
 
 public class Project {
 
-	@Id
+	/*@Id
 	private BigInteger id;
+	*/
 
-	@Indexed(unique = true)
+	@Id
 	private String name;
 
 	private Team team;
@@ -53,13 +54,6 @@ public class Project {
 		team  = t;
 	}
 
-	public void setId(BigInteger id) {
-		this.id = id;
-	}
-
-	public BigInteger getId() {
-		return id;
-	}
 
 	public List<Task> getTasks() {
 		return tasks;
@@ -74,14 +68,14 @@ public class Project {
 	}
 
 	public int hashCode() {
-		return id.intValue() + name.hashCode() + team.hashCode() + tasks.hashCode();
+		return name.hashCode() + team.hashCode() + tasks.hashCode();
 	}
 
 	public boolean equals(Object o) {
 		if(o == null) { return false; }
 		if(o instanceof Project) {
 			Project p = (Project)o;
-			return id.equals(p.id) && name.equals(p.name) && team.equals(p.team)
+			return name.equals(p.name) && team.equals(p.team)
 				&& tasks.equals(p.tasks);
 		}	
 		return false;
