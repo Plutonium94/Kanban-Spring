@@ -9,5 +9,7 @@ import java.util.List;
 public interface ProjectRepository extends MongoRepository<Project, String> {
 
 	List<Project> findByTeam_Name(String teamName);
+
+	List<Project> findByName(String projectName);
 }
 

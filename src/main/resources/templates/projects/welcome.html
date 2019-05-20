@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="uft-8">
+	<title th:text="${project.name}"></title>
+</head>
+<body>
+
+	<h1 th:text="${project.name}"></h1>
+	<p th:text="'brought to you by ' + ${project.team?.name} "></p>
+
+	<p th:if="${project.tasks.size() == 0}">Tasks are yet to be added to this project</p>
+
+	<p><a th:href="@{/projects/{name}/tasks/new(name=${project.name})}">Add task</a></p>
+
+	<h5 th:each="t : ${project.tasks}" th:text="${t.title}"></h5>
+
+
+</body>
+</html>

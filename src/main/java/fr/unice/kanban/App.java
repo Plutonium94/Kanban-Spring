@@ -47,6 +47,9 @@ public class App implements CommandLineRunner {
             KUser u2 = userRepository.save(new KUser("Micky","framboise", tm2));
             KUser u3 = userRepository.save(new KUser("Jaime","kiwi", tm1));
 
+            // Project p1 = projectRepository.save(new Project("The Great project", tm1));
+            // Project p2 = projectRepository.save(new Project("The little project", tm2));
+
             Task t1 = taskRepository.save(new Task("Add feature1","create feature1 using PHP", u1, u3, 3));
             Task t2 = taskRepository.save(new Task("Remove feature 16", "Remove feature 16", u3));
             Task t3 = taskRepository.save(new Task("Add feature 3", "create feature 3 using Python", u2, 8));
@@ -64,6 +67,10 @@ public class App implements CommandLineRunner {
             Project p2 = projectRepository.save(new Project("Medical Cabinet Software", tm1, t4, t5));
             Project p3 = projectRepository.save(new Project("Hybrid mobile app development", tm1, t6, t7, t8));
             Project p4 = projectRepository.save(new Project("Creation of calculator application", tm3, t9, t10));
+            /* Unique index duplicate bug, no exception thrown */
+            Project p5 = projectRepository.save(new Project("Creation of calculator application", tm2, t9, t10));
+
+            System.out.println(p1);
         }
 
     }

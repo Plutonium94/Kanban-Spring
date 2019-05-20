@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<title>Kanban Spring - Projects</title>
+</head>
+<body>
+
+	<h1>New project</h1>
+
+	<form action="#" th:action="@{/projects/create}" th:object="${project}" method="POST">
+
+		<input type="text" th:field="*{name}" required>
+		<select th:field="*{team}">
+			<option th:each="t : ${teams}" value="${t.name}" th:text="${t.name}"></option>
+		</select>
+
+		<button type="submit">Submit</button>
+	</form>
+
+</body>
+</html>

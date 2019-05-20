@@ -89,7 +89,7 @@ public class Task implements Serializable {
 	}
 
 	public void setExpectedDuration(int hours) {
-		expectedDuration = Duration.ofHours(hours);
+		expectedDuration = (hours == -1)? null: Duration.ofHours(hours);
 	}
 
 	public KUser getAssignee() {
@@ -139,8 +139,8 @@ public class Task implements Serializable {
 		return "Task[title: " + title + ", details: " + details 
 			+ ", expectedDuration: " + getExpectedDuration()
 			+ ", status: " + status
-			+ ", reporter: " + reporter
-			+ ", assignee: " + assignee
+			+ ", reporter: " + ((reporter==null)?"null":reporter.getUsername())
+			+ ", assignee: " + ((assignee ==null)?"null":assignee.getUsername())
 			+ ", id: " +id+"]";
 	}
 }

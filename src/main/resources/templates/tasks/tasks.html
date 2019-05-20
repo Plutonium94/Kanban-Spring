@@ -26,7 +26,7 @@
 					<td th:text="${t.id}"></td>
 					<td th:text="${t.title}"></td>
 					<td th:text="${t.status}"></td>
-					<td th:text="${t.expectedDuration}"></td>
+					<td th:text="${(t.expectedDuration == -1)? 'not set': t.expectedDuration}"></td>
 					<td th:text="${t.assignee?.username}"></td>
 					<td th:text="${t.reporter?.username}"></td>
 				</tr>

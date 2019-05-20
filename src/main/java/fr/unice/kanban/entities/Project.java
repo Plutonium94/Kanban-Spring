@@ -13,6 +13,7 @@ public class Project {
 	@Id
 	private BigInteger id;
 
+	/* Duplicates are accepted */
 	@Indexed(unique = true)
 	private String name;
 
@@ -34,6 +35,7 @@ public class Project {
 	}
 
 	public Project(String name, Team team, Task... tasks) {
+		this(name, team);
 		this.tasks = new ArrayList<Task>(Arrays.asList(tasks));
 	}
 
@@ -69,8 +71,12 @@ public class Project {
 		this.tasks = tasks;
 	}
 
+	public boolean addTask(Task t) {
+ 		return tasks.add(t);
+	}
+
 	public String toString() {
-		return "Project[name= " + name + ",team : " + team + "]";
+		return "Project[name= " + name + ",team : " + team + ", tasks" + tasks + "]";
 	}
 
 	public int hashCode() {
