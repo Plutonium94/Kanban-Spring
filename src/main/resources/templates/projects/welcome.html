@@ -14,7 +14,10 @@
 
 	<p><a th:href="@{/projects/{name}/tasks/new(name=${project.name})}">Add task</a></p>
 
-	<h5 th:each="t : ${project.tasks}" th:text="${t.title}"></h5>
+	<h5 th:each="t : ${project.tasks}">
+		<a th:href="@{/tasks/{tid}(tid=${t.id})}" th:text="${t.title}"></a>
+	</h5>
+
 
 
 </body>

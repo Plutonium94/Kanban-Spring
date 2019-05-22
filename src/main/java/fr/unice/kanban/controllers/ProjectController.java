@@ -70,11 +70,11 @@ public class ProjectController {
 
  	@GetMapping("/projects/{title}/tasks/new") 
  	public String newTaskForProject(@PathVariable("title") String name, Model model) {
- 		List<Project> projects = projectRepo.findByName(name);
- 		if(projects.isEmpty()) {
+ 		Optional<Project> optProject = projectRepo.findById(name);
+ 		if(!optProject.isPresent()) {
  			return "redirect:/projects";
  		} else {
- 			Project project = projects.get(0);
+ 			Project project = optProject.get();
  			model.addAttribute("project", project);
  			model.addAttribute("task", new Task());
  			model.addAttribute("users", userRepo.findAll());
@@ -83,7 +83,12 @@ public class ProjectController {
  	}
 
  	@PostMapping("/projects/{name}/tasks/add") 
- 	public String newTaskForProject(@PathVariable("name") String name, @ModelAttribute("task") Task task, @ModelAttribute("project") Project project, Model model) {
+ 	public String newTaskForProject(@PathVariable("name") String name, @ModelAttribute("task") Task task, Model model) {
+ 		Optional<Project> optProject = projectRepo.findById(name);
+ 		if(!optProject.isPresent()) {
+ 			return "redirect:/projects";
+ 		}
+ 		Project project = optProject.get();
  		System.out.println(project);
  		System.out.println(task);
  		if(project.addTask(task)) {

@@ -30,7 +30,7 @@ public class Task implements Serializable {
 
 	public Task(String title, String details, int hours) {
 		this(title, details);
-		expectedDuration = Duration.ofHours(hours);
+		setExpectedDuration(hours);
 	}
 
 	public Task(String title, String details, KUser reporter) {
@@ -85,7 +85,7 @@ public class Task implements Serializable {
 	}
 
 	public int getExpectedDuration() {
-		return (expectedDuration == null)? -1: (int)expectedDuration.toDays();
+		return (expectedDuration == null)? -1: (int)expectedDuration.toHours();
 	}
 
 	public void setExpectedDuration(int hours) {

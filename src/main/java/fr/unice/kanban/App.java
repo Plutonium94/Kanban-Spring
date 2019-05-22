@@ -70,9 +70,6 @@ public class App implements CommandLineRunner {
             /* Unique index duplicate bug, no exception thrown */
             Project p5 = projectRepository.save(new Project("Creation of calculator application", tm2, t9, t10));
 
-            System.out.println(p1);
-
-            System.out.println(p5);
         }
 
     }

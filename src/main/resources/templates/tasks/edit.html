@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<title th:text="${projectName} + ' - Edit task'"></title>
+</head>
+<body>
+
+	<h1 th:text="${projectName}"></h1>
+
+	<form action="#" th:action="@{/projects/{name}/tasks/{id}/edit(name=${projectName}, id=${t.id})}" th:object="${t}" method="POST">
+
+		<input type="text" th:field="*{title}" placeholder="title" required> <br>
+
+		<textarea th:field="*{details}" placeholder="details"></textarea> <br>
+
+		Expected duration (days) : <input type="number" th:field="*{expectedDuration}" th:value="${t.expectedDuration}"> <br>
+
+		<select th:field="*{status}">
+			<option th:each="s : ${statuses}" th:value="${s}" th:text="${s}"></option>
+		</select>
+
+		<select id="assignee">
+			<option th:each="u : ${users}" th:text="${u.username}" th:value="${u.username}"></option>
+
+		</select>
+
+		<button type="submit">Save changes</button>
+
+	</form>
+
+	<script th:inline="javascript"> 
+
+		document.addEventListener('DOMContentLoaded', (e)=>{
+
+			document.getElementById('assignee').addEventListener('change',(evt)=>{
+
+				let assignee = evt.target.value;
+				let url = [[@{/projects/{name}/tasks/{id}/edit/assignee/(name=${projectName}, id=${t.id})}]];
+				url += assignee;
+				fetch(url, {method: 'PUT'}).then((res)=>{
+					return res.json();
+				}).then((data)=>{
+					console.log(data);
+				});
+			});
+		});
+
+	</script>
+
+</body>
+</html><!--  -->

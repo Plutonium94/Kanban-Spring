@@ -3,19 +3,48 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
-	<title th:text="Kanban Spring - ${t.title}"></title>
+	<title th:text="'Kanban Spring - ' + ${t.title}"></title>
 </head>
 <body>
 
-	<h1 th:text="t.title"></h1>
+	<h1 th:text="${t.title}	"></h1>
 
-	<p>Expected duration : <span th:text="${t.expectedDuration == -1}: 'unknown': ${t.expectedDuration}"></span></p>
+	<p><a th:href="@{/projects/{pname}(pname=${projectName})}" th:text="${projectName}"></a></p>
 
-	<p>Assigned to <span th:text="${t.assignee.username}"></span>, reported by 
-		<span th:text="${t.reporter.username}"></span></p>
+	<p id="edit"><a th:href="@{/projects/{title}/tasks/{id}/view/edit(title=${projectName}, id=${t.id})}">Edit</a></p>
 
-	<p th:text="t.details"></p>
+	<p>Status : <span th:text="${t.status}"></span></p>
 
+	<p>Expected duration : 
+		<span data-property="expectedDuration" th:text="${t.expectedDuration == -1}? 'not set': ${t.expectedDuration}"></span> 
+		<!-- <button type="button" data-change="expectedDuration">Change</button> -->
+	</p>
+
+
+
+	<p>Assigned to 
+		<span th:text="${t.assignee == null}? 'no one': ${t.assignee?.username}"></span>
+		, reported by 
+		<span th:text="${t.reporter?.username}"></span></p>
+
+	<p th:text="${t.details}"></p>
+
+	<script>
+
+		let editMode = false;
+
+
+		document.addEventListener('DOMContentLoaded', (e)=>{
+
+			/*document.getElementById('edit').addEventListener('click',(evt)=>{
+				editMode != editMode;
+
+
+			});*/
+		});
+
+
+	</script>
 
 </body>
 </html>
