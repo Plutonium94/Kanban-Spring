@@ -50,6 +50,12 @@ public class ProjectController {
 		}
 	}
 
+	@GetMapping("/")
+	public String index() {
+		return "redirect:/projects";
+	}
+
+
 	@GetMapping("/projects") 
 	public String list(Model model) {
 		model.addAttribute("projects", projectRepo.findAll());

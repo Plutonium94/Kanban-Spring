@@ -1,0 +1,74 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+/* https://www.colourlovers.com/palette/4646976/starry_night?widths=1 */
+
+/* #0D15FF,#0A0075,#101B47,#002605,#FFEA30,#0D15FF,#0A0075,#101B47 */
+
+body {
+	background-color: #FFEA30;
+	padding: 40px;
+}
+
+h1 {
+	font-family: "Lucida Fax", serif;
+	font-size: 64px;
+	color: #0A0075 ;
+}
+
+h3 {
+	font-size: 42px;
+	color: #101B47;
+	font-family: "Lucida Bright", serif;
+}
+
+button, .button {
+	background-image:none;
+	box-shadow: none;
+	background-color: #101B47;
+	border: 1px solid #002605;
+	border-radius: 5px;
+	color:white;
+	display: inline-block;
+	cursor: pointer;
+}
+
+h5 {
+	font-family: "Lucida Fax";
+	font-size: 34px;
+}
+
+h5 a {
+	color: #002605;
+}
+
+button a, .button a, button a:visited, .button a:visited {
+	color: white;
+}
+
+.button a, .button a:visited, .button a, .button a:visited, h5 a, h5 a:visited {
+	text-decoration: none;
+}
+
+.button, button, input, textarea, select, p, h5 {
+	margin-bottom: 15px;
+}
+
+p {
+	font-family: "Lucida Sans", sans-serif;
+	font-size: 17px;
+	margin-bottom: 15px;
+}
+
+
+input, textarea, button, select, .button {
+	padding: 15px 30px;
+	font-family: "Lucida Sans","Arial", sans-serif;
+}
+
+input, textarea, select {
+	color: #0D15FF;
+	font-size: 22px;
+}

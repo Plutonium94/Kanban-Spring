@@ -4,14 +4,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<title th:text="'Kanban Spring - ' + ${t.title}"></title>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
 	<h1 th:text="${t.title}	"></h1>
 
-	<p><a th:href="@{/projects/{pname}(pname=${projectName})}" th:text="${projectName}"></a></p>
+	<p id="linkToProj"><a th:href="@{/projects/{pname}(pname=${projectName})}" th:text="${projectName}"></a></p>
 
-	<p id="edit"><a th:href="@{/projects/{title}/tasks/{id}/view/edit(title=${projectName}, id=${t.id})}">Edit</a></p>
+	<p id="edit" class="button"><a th:href="@{/projects/{title}/tasks/{id}/view/edit(title=${projectName}, id=${t.id})}">Edit</a></p>
 
 	<p>Status : <span th:text="${t.status}"></span></p>
 
@@ -45,6 +46,17 @@
 
 
 	</script>
+
+	<style>
+
+		#linkToProj {
+			font-size: 24px;
+		}
+
+		#linkToProj a, #linkToProj a:visited {
+			text-decoration: none;
+			color: green;
+		}
 
 </body>
 </html>

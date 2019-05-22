@@ -4,6 +4,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<title>Kanban Spring - Projects</title>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
@@ -13,6 +14,6 @@
 		<a th:href="@{/projects/{name}(name=${p.name})}" th:text="${p.name}"></a>
 	</h5>
 
-	<p th:text="${projects}"></p>
+	<!-- <p th:text="${projects}"></p> -->
 </body>
 </html>
